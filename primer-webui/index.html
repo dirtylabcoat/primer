@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Prime numbers</title>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <h1>Prime numbers are fun!</h1>
+        <div id="is-prime">
+            Is Prime
+            <input onclick="this.value=''" type="text" size="4" id="input-is-prime" value="N" />
+            <button onclick="getIsPrime(document.getElementById('input-is-prime').value);">Get</button>
+            =><span id="output-is-prime">___</span>
+        </div>
+        <hr/>
+        <div id="nth-prime">
+            Nth Prime
+            <input onclick="this.value=''" type="text" size="4" id="input-nth-prime" value="N" />
+            <button onclick="getNthPrime(document.getElementById('input-nth-prime').value);">Get</button>
+            =><span id="output-nth-prime">___</span>
+        </div>
+    </body>
+</html>
