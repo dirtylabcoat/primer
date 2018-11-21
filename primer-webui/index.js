@@ -1,6 +1,6 @@
-function getIsPrime(n) {
+function getIsPrime(num) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'PATH?n=' + n);
+    xhr.open('GET', 'http://localhost:8080/primer/api/calculate/is-prime?num=' + num);
     xhr.onreadystatechange = function(event) {
         console.log(event.target.response);
         document.getElementById('output-is-prime').innerText = event.target.response;
@@ -12,7 +12,7 @@ function getIsPrime(n) {
 function getNthPrime(n) {
     var xhr = new XMLHttpRequest();
     //xhr.open('POST', '');
-    xhr.open('GET', 'PATH?n=' + n);
+    xhr.open('GET', 'http://localhost:8080/primer/api/calculate/nth?n=' + n);
     xhr.onreadystatechange = function(event) {
         console.log(event.target.response);
         document.getElementById('output-nth-prime').innerText = event.target.response;

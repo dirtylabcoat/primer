@@ -41,14 +41,15 @@ public class CalculationService {
         BigInteger count = BigInteger.ZERO;
         BigInteger candidate = BigInteger.valueOf(2);
         while (count.compareTo(n) == -1) {
-            LOGGER.debug("n={}, count={}, candidate={}", new Object[] { n, count, candidate });
             if (isPrime(candidate)) {
                 count = count.add(BigInteger.ONE);
             }
             candidate = candidate.add(BigInteger.ONE);
         }
+        BigInteger nth = candidate.subtract(BigInteger.ONE);
+        LOGGER.debug("n={}, nth={}", new Object[] { n, nth });
         // The candidate has been incremented once after the count reached n
-        return candidate.subtract(BigInteger.ONE);
+        return nth;
     }
 
     public boolean isPrime(BigInteger num) {

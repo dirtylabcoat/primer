@@ -21,54 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package org.dirtylabcoat.primer.api.calculation.control;
+package org.dirtylabcoat.primer.api;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.io.IOException;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author Daniel Löfquist <daniel@lofquist.org>
+ * @author fighterhayabusa
  */
-public class CalculationServiceTest {
+@Provider
+public class CorsFilter implements ContainerResponseFilter {
 
-    public CalculationServiceTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getNth method, of class CalculationService.
-     */
-    @Test
-    public void testGetNth() throws Exception {
-        assertEquals(1, 1);
-    }
-
-    /**
-     * Test of isPrime method, of class CalculationService.
-     */
-    @Test
-    public void testIsPrime() throws Exception {
-        assertEquals(1, 1);
+    @Override
+    public void filter(ContainerRequestContext request, ContainerResponseContext response) throws IOException {
+          response.getHeaders().add("Access-Control-Allow-Origin", "*");
+          response.getHeaders().add("Access-Control-Allow-Credentials", "true");
+          response.getHeaders().add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
+          response.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
     }
 
 }

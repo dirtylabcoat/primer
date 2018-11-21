@@ -28,9 +28,12 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.dirtylabcoat.primer.api.calculation.control.CalculationService;
 
@@ -47,7 +50,15 @@ public class CalculationResource {
 
     @Path("nth")
     @GET
-    public Response nth(@Min(value = 1, message = "Number must be more than zero") @QueryParam("n") BigInteger n) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response nth(@NotNull @Min(value = 1, message = "Number must be more than zero") @QueryParam("n") BigInteger n) {
+//        return Response.status(Response.Status.OK)
+//                .header("Access-Control-Allow-Origin", "*")
+//                .header("Access-Control-Allow-Credentials", "true")
+//                .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+//                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+//                .entity(Json.createObjectBuilder().add("n", n).add("nth", calculationService.getNth(n)).build())
+//                .build();
         return Response.ok(Json.createObjectBuilder()
                 .add("n", n).add("nth", calculationService.getNth(n)).build())
                 .build();
@@ -55,7 +66,8 @@ public class CalculationResource {
 
     @Path("is-prime")
     @GET
-    public Response isPrime(@Min(value = 0, message = "Number must be positive") @QueryParam("num") BigInteger num) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response isPrime(@NotNull @Min(value = 0, message = "Number must be positive") @QueryParam("num") BigInteger num) {
         boolean a = calculationService.isPrime(num);
         return Response.ok(Json.createObjectBuilder()
                 .add("num", num).add("isPrime", a).build())
