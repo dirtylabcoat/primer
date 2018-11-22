@@ -23,11 +23,11 @@
  */
 package org.dirtylabcoat.primer.api.calculation.control;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import java.math.BigInteger;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -39,36 +39,61 @@ public class CalculationServiceTest {
     public CalculationServiceTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
+    private CalculationService calculationService;
+
+    @Test
+    public void testFirstPrimeIs2() {
+        BigInteger n = BigInteger.valueOf(1);
+        BigInteger nth = BigInteger.valueOf(2);
+        assertEquals(calculationService.getNth(n), nth);
     }
 
-    @AfterClass
-    public static void tearDownClass() {
+    @Test
+    public void testTenthPrimeIs29() {
+        BigInteger n = BigInteger.valueOf(10);
+        BigInteger nth = BigInteger.valueOf(29);
+        assertEquals(calculationService.getNth(n), nth);
+    }
+
+    @Test
+    public void testHundredthPrimeIs541() {
+        BigInteger n = BigInteger.valueOf(100);
+        BigInteger nth = BigInteger.valueOf(541);
+        assertEquals(calculationService.getNth(n), nth);
+    }
+
+    @Test
+    public void test2IsPrime() {
+        assertTrue(calculationService.isPrime(BigInteger.valueOf(2)));
+    }
+
+    @Test
+    public void test29IsPrime() {
+        assertTrue(calculationService.isPrime(BigInteger.valueOf(29)));
+    }
+
+    @Test
+    public void test541IsPrime() {
+        assertTrue(calculationService.isPrime(BigInteger.valueOf(541)));
+    }
+
+    @Test
+    public void test4IsNotPrime() {
+        assertFalse(calculationService.isPrime(BigInteger.valueOf(4)));
+    }
+
+    @Test
+    public void test34IsNotPrime() {
+        assertFalse(calculationService.isPrime(BigInteger.valueOf(34)));
+    }
+
+    @Test
+    public void test548IsNotPrime() {
+        assertFalse(calculationService.isPrime(BigInteger.valueOf(548)));
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        calculationService = new CalculationService();
     }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getNth method, of class CalculationService.
-     */
-    @Test
-    public void testGetNth() throws Exception {
-        assertEquals(1, 1);
-    }
-
-    /**
-     * Test of isPrime method, of class CalculationService.
-     */
-    @Test
-    public void testIsPrime() throws Exception {
-        assertEquals(1, 1);
-    }
-
 }
