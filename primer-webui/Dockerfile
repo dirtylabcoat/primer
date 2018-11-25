@@ -1,5 +1,8 @@
 FROM alpine:latest
 
+ARG primer_api_base_url
+ENV PRIMER_API_BASE_URL=$primer_api_base_url
+
 RUN apk update \
         && apk upgrade \
         && apk add --no-cache nginx bash\
@@ -12,6 +15,7 @@ RUN apk update \
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /www
 COPY index.js /www
+RUN sed -i -e "s/PRIMER_API_BASE_URL/$PRIMER_API_BASE_URL/g" /www/index.js
 
 EXPOSE 80
 
