@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: primer-webui
+spec:
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: primer-webui
+    spec:
+      containers:
+        - image: fighterhayabusa/primer-webui:minikube
+          imagePullPolicy: Always
+          name: primer-webui
+          ports:
+            - containerPort: 80
