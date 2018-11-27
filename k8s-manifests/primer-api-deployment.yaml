@@ -1,22 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: primer-api
+  name: primer-api-prod
 spec:
   replicas: 2
-  minReadySeconds: 15
-  strategy:
-    type: RollingUpdate
-    rollingUpdate: 
-      maxUnavailable: 1
-      maxSurge: 1
   template:
     metadata:
+      name: primer-api
       labels:
         app: primer-api
+        env: prod
     spec:
       containers:
-        - image: fighterhayabusa/primer-api:minikube
+        - image: fighterhayabusa/primer-api:bbl
           imagePullPolicy: Always
           name: primer-api
           ports:

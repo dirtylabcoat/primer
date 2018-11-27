@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: primer-webui-prod
+  name: primer-webui-canary
 spec:
-  replicas: 4
+  replicas: 2
   template:
     metadata:
       name: primer-webui
       labels:
         app: primer-webui
-        env: prod
+        env: canary
     spec:
       containers:
-        - image: fighterhayabusa/primer-webui:bbl
+        - image: fighterhayabusa/primer-webui:canary
           imagePullPolicy: Always
           name: primer-webui
           ports:
