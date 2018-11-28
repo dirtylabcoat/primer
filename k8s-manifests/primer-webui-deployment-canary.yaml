@@ -9,6 +9,7 @@ spec:
       name: primer-webui
       labels:
         app: primer-webui
+        version: "0.1"
         env: canary
     spec:
       containers:

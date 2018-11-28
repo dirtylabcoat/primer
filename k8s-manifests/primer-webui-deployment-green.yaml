@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: primer-webui-prod
+  name: primer-webui-green
 spec:
   replicas: 4
   template:
@@ -9,11 +9,11 @@ spec:
       name: primer-webui
       labels:
         app: primer-webui
-        version: "0.1"
+        version: "0.1.1"
         env: prod
     spec:
       containers:
-        - image: fighterhayabusa/primer-webui:bbl
+        - image: fighterhayabusa/primer-webui:green
           imagePullPolicy: Always
           name: primer-webui
           ports:

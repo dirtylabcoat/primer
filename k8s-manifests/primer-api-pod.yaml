@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod                                            
+metadata:
+  name: primer-api-pod
+spec:                                                
+  containers:
+    - image: fighterhayabusa/primer-api:bbl
+      name: primer-api          
+      ports:
+        - containerPort: 80
