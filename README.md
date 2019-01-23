@@ -14,13 +14,10 @@ This is a small Java EE back-end with two REST end-points. Build it with Maven, 
 The finished WAR-file will be in the *target*-directory.
 
 ## Run with Docker
-    cd primer-api
-    docker build -t primer-api .
-    docker run -d -p 8080:8080 primer-api
-    cd ../primer-webui
-    docker build -t primer-webui .
-    docker run -d -p 80:80 primer-webui
+Run the script in the root-directory.
 
-Open http://localhost/index.html to try it out.
+    ./run-w-docker.sh
+
+Open [http://localhost/index.html](http://localhost/index.html) to try it out.
 
 
